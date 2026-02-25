@@ -23,7 +23,7 @@
             <version>9.6.0</version>
             <scope>compile</scope>
         </dependency>
-<!-- Hibernate -->
+<!-- Hibernate ORM -->
         <!-- Source: https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>

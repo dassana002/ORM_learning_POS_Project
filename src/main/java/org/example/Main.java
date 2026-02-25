@@ -1,21 +1,33 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class Main {
     static void main() {
         try {
-            Connection conn = DBConnection.getInstance().getConnection();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO customers (name, address) VALUES (?,?)");
-            ps.setString(1,"Dassana");
-            ps.setString(2,"galle");
-            int result = ps.executeUpdate();
-            if (result > 0) {
-                System.out.println("Insert Data Successfully....");
-            }
+            // Introduce Hibernate Configurations to Project
+            SessionFactory sessionFactory = new Configuration()
+                    .configure("hibernate.configuration.xml")
+                    .addAnnotatedClass(Customer.class)
+                    .buildSessionFactory();
+
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            Customer customer = new Customer();
+            customer.setName("Thiwanka");
+            customer.setAddress("Horana");
+
+            session.save(customer);
+            transaction.commit();
+
+            session.close();
+            sessionFactory.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

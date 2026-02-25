@@ -19,7 +19,7 @@ public class Customer {
     @Id
     // How to Generate Value
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     private String name;
     private String address;
