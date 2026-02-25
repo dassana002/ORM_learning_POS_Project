@@ -12,11 +12,13 @@ public class DBConnection {
     private static DBConnection dbConnection;
     private final Connection connection;
 
+    // Get DBConnection and Set to Session
     private DBConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
     }
 
+    // Do you create before new DBConnection
     public static DBConnection getInstance() throws SQLException, ClassNotFoundException {
         if (dbConnection==null) {
             return new DBConnection();
@@ -24,6 +26,7 @@ public class DBConnection {
         return dbConnection;
     }
 
+    // return Connection Object
     public Connection getConnection() {
         return connection;
     }
