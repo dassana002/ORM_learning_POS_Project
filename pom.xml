@@ -31,5 +31,13 @@
             <version>6.2.47.Final</version>
             <scope>compile</scope>
         </dependency>
+<!-- Lombok -->
+        <!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>
